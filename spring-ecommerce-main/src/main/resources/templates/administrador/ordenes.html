@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Explora el mundo de las ordenes en Spring Ecommerce">
+    <meta name="author" content="">
+
+    <title>MegaMarket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Futuristic and Surreal styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle, #004e92, #000000);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .jumbotron {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            text-align: center;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .jumbotron h1, .jumbotron p {
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.7);
+            color: #ffffff;
+        }
+
+        .breadcrumb {
+            background: none;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .breadcrumb .breadcrumb-item a {
+            color: #ffffff;
+            transition: color 0.3s;
+        }
+
+        .breadcrumb .breadcrumb-item a:hover {
+            color: #00ffea;
+        }
+
+        .card {
+            background: rgba(50, 50, 50, 0.8);
+            color: #ffffff;
+            border-radius: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card-header {
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .card-header h2 {
+            margin-bottom: 0;
+        }
+
+        .table th,
+        .table td {
+            border-top: none;
+            color: #ffffff;
+        }
+
+        .table thead th {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #ff00c7, #00ffea);
+            border: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #00ffea, #ff00c7);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #00ffea;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div th:include="administrador/template_admin.html::header"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Jumbotron Header -->
+       <header class="jumbotron my-5">
+    <h1 class="display-4">Bienvenido al MegaMarket</h1>
+    <p class="lead">Explora el mundo de las órdenes en nuestra plataforma.</p>
+</header>
+
+
+        <!-- Page Heading/Breadcrumbs -->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active">Ordenes</li>
+        </ol>
+
+        <!-- Blog Post -->
+        <div class="card">
+            <div class="card-header">
+                <h2>MegaMarket <small>Ordenes</small></h2>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">No. de Orden</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="orden:${ordenes}">
+                            <td th:text="${orden.numero}"></td>
+                            <td th:text="${orden.fechaCreacion}"></td>
+                            <td th:text="${orden.total}"></td>
+                            <td><a th:href="@{/administrador/detalle/{id} (id=${orden.id}) }" class="btn btn-success">Ver Detalle</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

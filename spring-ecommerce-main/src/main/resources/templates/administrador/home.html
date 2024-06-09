@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MegaMarket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Futuristic styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #000000, #000000);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .jumbotron {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+        }
+
+        .jumbotron h1, .jumbotron p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            background: rgba(50, 50, 50, 0.8);
+            color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .card-img-top {
+            border-radius: 20px 20px 0 0;
+        }
+
+        .card-text {
+            margin-top: 10px;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            border: none;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #96c93d, #00b09b);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #96c93d;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div th:include="administrador/template_admin.html::header"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Jumbotron Header -->
+        <header class="jumbotron my-4 text-center">
+            <h1 class="display-3 glow">Bienvenido al MegaMarket</h1>
+            <p class="lead">Tu tienda de productos en Línea</p>
+        </header>
+
+        <!-- Page Features -->
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4" th:each="producto: ${productos}">
+                <div class="card h-100">
+                    <img class="card-img-top" th:src="@{/images/{img} (img=${producto.imagen})}" alt="">
+                    <div class="card-body">
+                        <p class="card-text" th:text="${producto.nombre}"></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="productohome.html" class="btn btn-success">Ver producto</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
+
+

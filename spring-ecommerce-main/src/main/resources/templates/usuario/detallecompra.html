@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>MegaMarket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Futuristic styles -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #000000, #000000);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .breadcrumb {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+            color: #ffffff;
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+        }
+
+        .breadcrumb-item.active {
+            color: #cccccc;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            background: rgba(50, 50, 50, 0.8);
+            color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            color: #ffffff;
+        }
+
+        .thead-dark th {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-color: #555555;
+        }
+
+        h1, h2, h5, .breadcrumb-item, .breadcrumb-item a {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .table {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .btn-futuristic {
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
+            border: none;
+            color: #ffffff;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-futuristic:hover {
+            background: linear-gradient(135deg, #99f2c8, #1f4037);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #99f2c8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}"></div>
+    <div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"></div>
+
+<div class="container mt-5">
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3 glow">MegaMarket <small>Detalles</small></h1>
+    <!-- Resto del contenido -->
+</div>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item"><a th:href="@{/usuario/compras}">Compras</a></li>
+            <li class="breadcrumb-item active">Detalle de Compra</li>
+        </ol>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Producto</th>                  
+                                    <th scope="col">Precio</th>
+                                    <th scope="col">Total</th>                  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="detalle : ${detalles}">
+                                    <td th:text="${detalle.cantidad}"></td>
+                                    <td th:text="${detalle.nombre}"></td>
+                                    <td th:text="${detalle.precio}"></td>
+                                    <td th:text="${detalle.total}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

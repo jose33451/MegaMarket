@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MegaMarket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{vendor/bootstrap/css/bootstrap.min.css}"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <style>
+        /* Estilos personalizados */
+        body {
+            background-color: #000; /* Fondo negro */
+            color: #fff; /* Texto blanco */
+            font-family: 'Orbitron', sans-serif; /* Fuente personalizada */
+            margin-top: 70px; /* Ajuste de margen superior */
+        }
+        .navbar-brand {
+            font-size: 1.5rem; /* Tamaño de fuente más grande para el logo */
+        }
+        .navbar-dark .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf-8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba(255, 255, 255, 0.8)" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22" /%3E%3C/svg%3E'); /* Icono del botón del navbar */
+        }
+        .navbar-collapse {
+            background-color: #000; /* Fondo negro para el navbar */
+        }
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente para los campos de formulario */
+            border: none; /* Sin borde */
+            color: #fff; /* Texto blanco */
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5); /* Color del placeholder */
+        }
+        .btn-outline-success {
+            border-color: #00ff99; /* Color del borde */
+            color: #00ff99; /* Color del texto */
+        }
+        .btn-outline-success:hover {
+            background-color: #00ff99; /* Verde futurista en hover */
+            border-color: #00ff99; /* Borde verde en hover */
+            color: #000; /* Texto negro en hover */
+        }
+        .py-5 {
+            background-color: #000; /* Fondo negro para el footer */
+            color: #fff; /* Texto blanco para el footer */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">MegaMarket</a>
+
+                <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
+                    <input class="form-control mr-sm-2" type="search"
+                        placeholder="Buscar" aria-label="Search" name="nombre"
+                        autocomplete="off">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" th:href="@{/getCart}">Carrito</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/usuario/login}">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div th:fragment="header-user">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" th:href="@{/}">MegaMarket</a>
+
+                <form class="form-inline my-2 my-lg-0" method="post" th:action="@{/search}">
+                    <input class="form-control mr-sm-2" type="search"
+                        placeholder="Buscar" aria-label="Search" name="nombre"
+                        autocomplete="off">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
+                                id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"> USER </a>
+                            <div class="dropdown-menu"
+                                aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" th:href="@{/usuario/compras}">Compras</a>
+                                <a class="dropdown-item" th:href="@{/getCart}">Carrito</a> 
+                                <a class="dropdown-item" th:href="@{/usuario/cerrar}">Salir</a> 
+                            </div></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Footer -->
+    <div th:fragment="footer">
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">
+            </div>
+            <!-- /.container -->
+        </footer>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>

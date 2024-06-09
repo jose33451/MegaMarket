@@ -1,0 +1,39 @@
+tenemeos que configurar la base de datos tal cual como esta en el propertys del spring
+en el caso de nosotros implementamos la base de datos mysql worbench para llevar acabo el proyecto
+
+el usuario predeterminado a utilizar es: root
+
+la contraseña es: NewP@ssw0rd123!
+
+
+
+
+
+
+
+deploy:
+user 
+spring
+
+contraseña
+H4rx0rlandC0d3r
+
+
+165.227.105.194
+
+spring-ecommerce-0.0.1-SNAPSHOT
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'tu_contraseña';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'NewP@ssw0rd123!';
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'admin';
+
+http://165.227.105.194:8124/
+java -jar /opt/spring-ecommerce-0.0.1-SNAPSHOT.jar
+
+
+sudo nohup java -jar /opt/spring-ecommerce-0.0.1-SNAPSHOT > /opt/logs/log3.log 2>&1 &
+
+
+

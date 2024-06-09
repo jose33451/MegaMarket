@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MegaMarket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Custom styles for a futuristic look -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            border-bottom: 2px solid #007bff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .breadcrumb {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+            border-radius: 8px;
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+        }
+
+        .breadcrumb-item.active {
+            color: #cccccc;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            background: rgba(50, 50, 50, 0.8);
+            color: #ffffff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            border: none;
+        }
+
+        .btn-success:hover {
+            background: linear-gradient(135deg, #96c93d, #00b09b);
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #96c93d;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            color: #ffffff;
+        }
+
+        .thead-dark th {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-color: #555555;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1, h2, h5, .breadcrumb-item, .breadcrumb-item a {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .table {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div th:include="usuario/template_usuario.html::header" th:if="${sesion==null}"></div>
+    <div th:include="usuario/template_usuario.html::header-user" th:unless="${sesion==null}"></div>
+
+<br>
+<br>
+<br>
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">
+            MegaMarket <small>Compras</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active">Compras</li>
+        </ol>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">No. de Orden</th>
+                                    <th scope="col">Fecha</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="orden : ${ordenes}">
+                                    <td th:text="${orden.numero}"></td>
+                                    <td th:text="${orden.fechaCreacion}"></td>
+                                    <td th:text="${orden.total}"></td>
+                                    <td><a th:href="@{/usuario/detalle/{id} (id=${orden.id})}" class="btn btn-success">Ver Detalle</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

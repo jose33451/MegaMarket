@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MegaMarket</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <!-- Custom styles for a futuristic look -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: #fff;
+        }
+
+        .navbar {
+            background-color: rgba(52, 58, 64, 0.9);
+            color: #fff;
+            border-bottom: 2px solid #007bff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .breadcrumb {
+            background-color: rgba(68, 68, 68, 0.8);
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+        }
+
+        .breadcrumb-item.active {
+            color: #ccc;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            background: rgba(51, 51, 51, 0.9);
+            color: #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn {
+            border-radius: 50px;
+            transition: transform 0.3s;
+        }
+
+        .btn-dark {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            border: none;
+        }
+
+        .btn-dark:hover {
+            background: linear-gradient(135deg, #0056b3, #007bff);
+            transform: scale(1.05);
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            color: #fff;
+        }
+
+        .thead-dark th {
+            background-color: rgba(68, 68, 68, 0.9);
+            border-color: #555;
+        }
+
+        .list-group-item {
+            background-color: transparent;
+            border: none;
+            color: #fff;
+        }
+
+        .list-group-item h5 {
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        h1, h2, h5, .breadcrumb-item, .breadcrumb-item a {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .alert-light {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+        }
+
+        .card-title {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div th:include="usuario/template_usuario.html::header"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Page Heading/Breadcrumbs -->
+        <h1 class="mt-4 mb-3">
+            MegaMarket <small>Resumen de la orden</small>
+        </h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active">Orden</li>
+        </ol>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="card-body">
+                            <h5 class="card-title">DATOS ORDEN</h5>
+                            <h6 th:text="'Nombre: ' + ${usuario.nombre}"></h6>
+                            <h6 th:text="'Correo: ' + ${usuario.email}"></h6>
+                            <h6 th:text="'Dirección: ' + ${usuario.direccion}"></h6>
+
+                            <h5 class="card-title">PRODUCTOS</h5>
+                            <div class="alert alert-light" role="alert">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Cantidad</th>
+                                            <th scope="col">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="dtorden : ${cart}">
+                                            <td th:text="${dtorden.nombre}"></td>
+                                            <td th:text="${dtorden.precio}"></td>
+                                            <td th:text="${dtorden.cantidad}"></td>
+                                            <td th:text="${dtorden.total}"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <h2 class="card-title">Resumen Orden</h2>
+                        <ul class="list-group">
+                            <li class="list-group-item"><h5 th:text="'Total: ' + ${orden.total}"></h5></li>
+                            <a th:href="@{/saveOrder}" class="btn btn-dark mt-3">Generar</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MegaMarket</title>
+
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/heroic-features.css}" rel="stylesheet">
+
+    <style>
+        /* Estilos personalizados */
+        body {
+            background-color: #121212; /* Fondo oscuro */
+            color: #ffffff; /* Texto blanco */
+            font-family: 'Roboto', sans-serif; /* Fuente personalizada */
+        }
+
+        .jumbotron {
+            background-color: #333; /* Gris oscuro para el jumbotron */
+            color: #ffffff; /* Texto blanco */
+            padding: 3rem 1rem; /* Ajuste de espaciado */
+            border-radius: 0; /* Borde sin redondear */
+            text-align: center; /* Centrar texto */
+        }
+
+        .jumbotron h1 {
+            font-size: 4rem; /* Tamaño grande de fuente */
+            margin-bottom: 0; /* Eliminar margen inferior */
+        }
+
+        .lead {
+            font-size: 1.8rem; /* Tamaño de fuente más grande */
+        }
+
+        .card {
+            background-color: #333; /* Fondo de la tarjeta */
+            border: none; /* Eliminar borde de la tarjeta */
+            transition: all 0.3s ease; /* Transición suave */
+            margin-top: 50px; /* Espacio superior */
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Efecto de levantamiento en hover */
+        }
+
+        .card-footer {
+            background-color: #444; /* Fondo más oscuro para el footer */
+            border-top: none; /* Eliminar borde superior */
+        }
+
+        .btn-dark {
+            background-color: #009688; /* Verde turquesa */
+            border-color: #009688; /* Color del borde */
+            font-size: 1.2rem; /* Tamaño de fuente */
+            padding: 10px 30px; /* Ajuste de padding */
+            border-radius: 30px; /* Borde redondeado */
+            margin-top: 20px; /* Espacio superior */
+        }
+
+        .btn-dark:hover {
+            background-color: #00796b; /* Verde turquesa más oscuro en hover */
+            border-color: #00796b; /* Color del borde en hover */
+        }
+
+        .list-group-item {
+            background-color: transparent; /* Fondo transparente */
+            border: none; /* Eliminar borde */
+            color: #ffffff; /* Texto blanco */
+            font-size: 1.2rem; /* Tamaño de fuente */
+        }
+
+        .list-group-item h5, .list-group-item p {
+            margin-bottom: 5px; /* Eliminar margen inferior */
+        }
+
+        .list-group-item input[type="number"] {
+            width: 70px; /* Ancho del input */
+            background-color: #333; /* Fondo de input */
+            border: none; /* Eliminar borde */
+            color: #ffffff; /* Texto blanco */
+            padding: 5px 10px; /* Ajuste de padding */
+            border-radius: 5px; /* Borde redondeado */
+        }
+
+        .list-group-item input[type="number"]::-webkit-inner-spin-button,
+        .list-group-item input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none; /* Eliminar flechas de incremento */
+            margin: 0; /* Eliminar margen */
+        }
+
+        .list-group-item input[type="number"]::-webkit-outer-spin-button,
+        .list-group-item input[type="number"]::-webkit-inner-spin-button {
+            display: none; /* Ocultar flechas de incremento en Chrome */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <div th:include="usuario/template_usuario.html::header"></div>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="jumbotron">
+            <h1 class="display-3 glow">MegaMarket</h1>
+            <p class="lead">Producto</p>
+        </div>
+
+        <!-- Blog Post -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="#"> <img class="img-fluid rounded"
+                                th:src="@{/images/{img} (img=${producto.imagen})  }" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <form th:action="@{/cart}" method="POST">
+                            <input type="hidden" th:value="${producto.id}" name="id">
+                            <h2 class="card-title" th:text="${producto.nombre}"></h2>
+
+                            <ul class="list-group">
+                                <li class="list-group-item"><h5 th:text=" 'Precio: '+ ${producto.precio} "></h5></li>
+                                <li class="list-group-item">
+                                    <p th:text=" 'Descripción: '+ ${producto.descripcion} "></p>
+                                </li>
+                                <li class="list-group-item"><h6>
+                                        Cantidad: <input type="number" id="cantidad" name="cantidad"
+                                            autocomplete="off" min="1" max="5" value="1">
+                                    </h6></li>
+                            </ul>
+
+                            <button type="submit" class="btn btn-dark">Añadir al carrito</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <div th:include="usuario/template_usuario.html::footer"></div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+
+</html>
